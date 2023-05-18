@@ -13,14 +13,22 @@
     <link rel="stylesheet" href="{{url('vendors')}}/bootstrap-datepicker/bootstrap-datepicker.min.css" />
     <link rel="stylesheet" href="{{url('css')}}/dashboard.css" />
     <link rel="shortcut icon" href="{{url('images')}}/logo-mini.png" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{{--    table --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+
 </head>
 
 <body>
     <div class="container-scroller">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-                <a class="sidebar-brand brand-logo" href="index.html"><img src="{{url('images')}}/logo.png" alt="logo" /></a>
-                <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="{{url('images')}}/logo-mini.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo" href="{{route('home')}}"><img src="{{url('images')}}/logo.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="{{route('home')}}"><img src="{{url('images')}}/logo-mini.png" alt="logo" /></a>
             </div>
             <ul class="nav">
                 <li class="nav-item nav-profile">
@@ -31,72 +39,105 @@
                             <!--change to offline or busy as needed-->
                         </div>
                         <div class="nav-profile-text d-flex flex-column pr-3">
-                            <span class="font-weight-medium mb-2">DEA RAHMAN FAUZI</span>
-                            <span class="font-weight-normal">PROJECT MANAGER</span>
+                            <span class="font-weight-medium mb-2">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
+                            <span class="font-weight-normal">{{\Illuminate\Support\Facades\Auth::user()->role}}</span>
                         </div>
                         <span class="badge badge-danger text-white ml-3 rounded">3</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('admin.index')}}">
                         <i class="mdi mdi-home menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" href="{{route('admin.foodReqIndex')}}">
                         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                        <span class="menu-title">Pemetaan Request Pangan</span>
-                        <i class="menu-arrow"></i>
+                        <span class="menu-title">Pemetaan Request <br> Pangan</span>
                     </a>
-                    <div class="collapse" id="ui-basic">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/icons/Data Pangan.html">
+                    <a class="nav-link" href="{{route('admin.NonFoodRequestIndex')}}">
+                        <i class="mdi mdi-account menu-icon"></i>
+                        <span class="menu-title">Pemetaan Request Non <br>Pangan</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.foodIndex')}}">
+                        <i class="mdi mdi-food menu-icon"></i>
+                        <span class="menu-title">List Pangan</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.foodProdIndex')}}">
                         <i class="mdi mdi-contacts menu-icon"></i>
                         <span class="menu-title">Data Produksi Pangan</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/forms/Pemetaan Pasar & Toko.html">
+                    <a class="nav-link" href="{{route('admin.marketMapingIndex')}}">
                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                         <span class="menu-title">Pemetaan Pasar & Toko</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/charts/Pemetaan Petani & Peternakan.html">
+                    <a class="nav-link" href="{{route('admin.agriIndex')}}">
                         <i class="mdi mdi-chart-bar menu-icon"></i>
                         <span class="menu-title">Pemetaan Tani Ternak</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/tables/Visualisasi.html">
+                    <a class="nav-link" data-toggle="collapse" href="#visualisasi" aria-expanded="false" aria-controls="ui-basic">
                         <i class="mdi mdi-table-large menu-icon"></i>
                         <span class="menu-title">Visualisasi</span>
                     </a>
+
+                    <div class="collapse" id="visualisasi">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('visualisasi.wilayah.index')}}">Per Wilayah</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('visualisasi.wilayah.banding')}}">Perbandingan Wilayah</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
                 <li class="nav-item">
                     <span class="nav-link" href="#">
                         <span class="menu-title">Data warga</span>
                     </span>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="../documentation/Pemetaan Warga.html">
+                    <a class="nav-link" data-toggle="collapse" href="#pemetaan" aria-expanded="false" aria-controls="ui-basic">
                         <i class="mdi mdi-file-document-box menu-icon"></i>
                         <span class="menu-title">Pemetaan Warga</span>
+                        <i class="menu-arrow"></i>
                     </a>
+                    <div class="collapse" id="pemetaan">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.wargaProvinsi')}}">Provinsi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.wargaKota')}}">Kabupaten / Kota</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.wargaKecamatan')}}">Kecamatan</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item sidebar-actions">
                     <div class="nav-link">
@@ -248,7 +289,9 @@
             </nav>
             <div class="main-panel">
                 <div class="content-wrapper pb-0">
+
                     @yield('content')
+
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -283,6 +326,14 @@
     <!-- Custom js for this page -->
     <script src="{{url('js')}}/dashboard/dashboard.js"></script>
     <!-- End custom js for this page -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    @stack('script')
+
 </body>
 
 </html>
