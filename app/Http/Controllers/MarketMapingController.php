@@ -36,14 +36,13 @@ class MarketMapingController extends Controller
     }
 
     public function updateMarket($id , Request  $request){
-        $data = FoodProduction::find($id);
+        $data = MarketMaping::find($id);
         $kecamatan = Kecamatan::find($request->kecamatan_id);
         $data->user_id = Auth::user()->id;
         $data->kecamatan_id = $kecamatan->id;
         $data->kota_id = $kecamatan->kota->id;
         $data->provinsi_id = $kecamatan->kota->provinsi_id;
         $data->place_code = 0;
-        $data->food_id = $request->food_id;
         $data->title = $request->title;
         $data->description = $request->description;
         $data->number = $request->number;

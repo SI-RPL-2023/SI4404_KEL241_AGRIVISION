@@ -16,7 +16,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-{{--    table --}}
+    {{--    table --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
@@ -34,7 +34,7 @@
                 <li class="nav-item nav-profile">
                     <a href="#" class="nav-link">
                         <div class="nav-profile-image">
-                            <img src="{{url('images')}}/faces/face1.jpeg" alt="profile" />
+                            <img src="{{url('images')}}/faces/face1.png" alt="profile" />
                             <span class="login-status online"></span>
                             <!--change to offline or busy as needed-->
                         </div>
@@ -76,21 +76,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.foodProdIndex')}}">
                         <i class="mdi mdi-contacts menu-icon"></i>
-                        <span class="menu-title">Data Produksi Pangan</span>
+                        <span class="menu-title">Data Produsen</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.marketMapingIndex')}}">
                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                        <span class="menu-title">Pemetaan Pasar & Toko</span>
+                        <span class="menu-title">Data Pasar</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.agriIndex')}}">
                         <i class="mdi mdi-chart-bar menu-icon"></i>
-                        <span class="menu-title">Pemetaan Tani Ternak</span>
+                        <span class="menu-title">Data Pertanian dan Peternakan</span>
                     </a>
                 </li>
 
@@ -181,8 +181,8 @@
                     <ul class="navbar-nav navbar-nav-right ml-lg-auto">
                         <li class="nav-item nav-profile dropdown border-0">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
-                                <img class="nav-profile-img mr-2" alt="" src="{{url('images')}}/faces/face1.jpeg" />
-                                <span class="profile-name">DEA RAHMAN FAUZI</span>
+                                <img class="nav-profile-img mr-2" alt="" src="{{url('images')}}/faces/face1.png" />
+                                <span class="profile-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
                             </a>
                             <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

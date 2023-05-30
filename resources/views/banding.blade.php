@@ -24,58 +24,35 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
-<!-- Page navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" data-spy="affix" data-offset-top="0">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img src="{{url('images')}}/logo.svg" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Page navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" data-spy="affix" data-offset-top="0">
+        <div class="container">
+            <a class="navbar-brand" href="{{route('home')}}"><img src="{{url('images')}}/logo.svg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('home')}}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('home')}}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('home')}}">Service</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('home')}}">Member</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('home')}}">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="- btn btn-primary rounded ml-4" href="{{route('banding')}}">Pangan</a>
-                </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="- btn btn-primary rounded ml-4" href="{{route('banding')}}">Perbandingan</a>
+                    </li>
 
-                @guest
+                    @guest
                     <li class="nav-item">
                         <a class="- btn btn-primary rounded ml-4" href="{{route('login')}}">Login</a>
                     </li>
 
 
 
-                @else
-                    <button class="btn btn-primary rounded ml-4" data-toggle="modal" data-target="#update">Update Profile</button>
-
-
-
-
-
-
+                    @else
                     @if(\Illuminate\Support\Facades\Auth::user()->role =='admin')
-                        <li class="nav-item">
-                            <a class="- btn btn-primary rounded ml-4" href="{{route('admin.index')}}">Dashboard Admin</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="- btn btn-primary rounded ml-4" href="{{route('admin.index')}}">Dashboard Admin</a>
+                    </li>
                     @endif
                     <li class="nav-item">
-                        <a class="btn btn-danger rounded ml-4" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                        <a class="btn btn-danger rounded ml-4" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
@@ -84,110 +61,111 @@
                             @csrf
                         </form>
                     </li>
-                @endguest
-            </ul>
+                    @endguest
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<!-- End of page navibation -->
+    </nav>
+    <!-- End of page navibation -->
 
 
 
     @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
     @endif
 
-<div class="section p-5 mt-5">
-    <div class="row">
-        <div class="col card w-50">
-            <h2 class="text-center m-3">Data Wilayah {{$kecamatan->name}} dan {{$kecamatan2->name}} </h2>
+    <div class="section p-5 mt-5">
+        <div class="row">
+            <div class="col card w-50">
+                <h2 class="text-center m-3">Data Wilayah {{$kecamatan->name}} dan {{$kecamatan2->name}} </h2>
 
-            <form action="{{route('banding.kecamatan')}}" class="m-3" method="get">
-                @csrf
-                @method('get')
-                <div class="form-group d-flex">
-                    <label for="">Bandingkan Kecamatan</label>
-                    <select name="kecamatan_id" id="" class="form-control m-2">
-                        @foreach($kecamatanAll as $x)
+                <form action="{{route('banding.kecamatan')}}" class="m-3" method="get">
+                    @csrf
+                    @method('get')
+                    <div class="form-group d-flex">
+                        <label for="">Bandingkan Kecamatan</label>
+                        <select name="kecamatan_id" id="" class="form-control m-2">
+                            @foreach($kecamatanAll as $x)
                             <option value="{{$x->id}}">{{$x->name}}</option>
-                        @endforeach
-                    </select>
+                            @endforeach
+                        </select>
 
-                    <select name="kecamatan_id2" id="" class="form-control m-2">
-                        @foreach($kecamatanAll as $x)
+                        <select name="kecamatan_id2" id="" class="form-control m-2">
+                            @foreach($kecamatanAll as $x)
                             <option value="{{$x->id}}">{{$x->name}}</option>
-                        @endforeach
-                    </select>
-                    <button class="btn btn-success" type="submit">Search</button>
+                            @endforeach
+                        </select>
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </div>
+
+                </form>
+
+
+                <form action="{{route('banding.kota')}}" class="m-3" method="get">
+                    @csrf
+                    @method('get')
+                    <div class="form-group d-flex">
+                        <label for="">Search Kota</label>
+                        <select name="kecamatan_id" id="" class="form-control m-2">
+                            @foreach($kota as $x)
+                            <option value="{{$x->id}}">{{$x->name}}</option>
+                            @endforeach
+                        </select>
+
+                        <select name="kecamatan_id2" id="" class="form-control m-2">
+                            @foreach($kota as $x)
+                            <option value="{{$x->id}}">{{$x->name}}</option>
+                            @endforeach
+                        </select>
+
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </div>
+
+                </form>
+
+                <form action="{{route('banding.provinsi')}}" class="m-3" method="get">
+                    @csrf
+                    @method('get')
+                    <div class="form-group d-flex">
+                        <label for="">Search Provinsi</label>
+                        <select name="kecamatan_id" id="" class="form-control m-2">
+                            @foreach($provinsi as $x)
+                            <option value="{{$x->id}}">{{$x->name}}</option>
+                            @endforeach
+                        </select>
+
+                        <select name="kecamatan_id2" id="" class="form-control m-2">
+                            @foreach($provinsi as $x)
+                            <option value="{{$x->id}}">{{$x->name}}</option>
+                            @endforeach
+                        </select>
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </div>
+
+                </form>
+
+
+                <div class="m-3">
+                    <canvas id="myChart"></canvas>
                 </div>
-
-            </form>
-
-
-            <form action="{{route('banding.kota')}}" class="m-3" method="get">
-                @csrf
-                @method('get')
-                <div class="form-group d-flex">
-                    <label for="">Search Kota</label>
-                    <select name="kecamatan_id" id="" class="form-control m-2">
-                        @foreach($kota as $x)
-                            <option value="{{$x->id}}">{{$x->name}}</option>
-                        @endforeach
-                    </select>
-
-                    <select name="kecamatan_id2" id="" class="form-control m-2">
-                        @foreach($kota as $x)
-                            <option value="{{$x->id}}">{{$x->name}}</option>
-                        @endforeach
-                    </select>
-
-                    <button class="btn btn-success" type="submit">Search</button>
-                </div>
-
-            </form>
-
-            <form action="{{route('banding.provinsi')}}" class="m-3" method="get">
-                @csrf
-                @method('get')
-                <div class="form-group d-flex">
-                    <label for="">Search Provinsi</label>
-                    <select name="kecamatan_id" id="" class="form-control m-2">
-                        @foreach($provinsi as $x)
-                            <option value="{{$x->id}}">{{$x->name}}</option>
-                        @endforeach
-                    </select>
-
-                    <select name="kecamatan_id2" id="" class="form-control m-2">
-                        @foreach($provinsi as $x)
-                            <option value="{{$x->id}}">{{$x->name}}</option>
-                        @endforeach
-                    </select>
-                    <button class="btn btn-success" type="submit">Search</button>
-                </div>
-
-            </form>
-
-
-            <div class="m-3">
-                <canvas id="myChart"></canvas>
             </div>
         </div>
+
+
     </div>
 
 
-</div>
-
-
     <script>
-        $(document).ready( function () {
+        $(document).ready(function () {
             $('#table1').DataTable();
-        } );
+        });
 
         $(document).ready(function () {
             $('#example').DataTable();
         });
+
     </script>
 
     <script>
@@ -196,16 +174,56 @@
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['pasar', 'pabrik', 'Pertainian', 'Request Pangan', 'Request Non Pangan'],
+                labels: ['Pasar', 'Produsen', 'Pertanian/Peternakan', 'Request Pangan', 'Request Pembuatan Pasar Daerah'],
                 datasets: [{
                     label: 'Data Wilayah {{$kecamatan->name}}',
-                    data: [{{$pasar}}, {{$pabrik}}, {{$agri}}, {{$foodRequest}}, {{$nonFoodRequest}} ],
+                    data: [{
+                        {
+                            $pasar
+                        }
+                    }, {
+                        {
+                            $pabrik
+                        }
+                    }, {
+                        {
+                            $agri
+                        }
+                    }, {
+                        {
+                            $foodRequest
+                        }
+                    }, {
+                        {
+                            $nonFoodRequest
+                        }
+                    }],
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 }, {
                     label: 'Data Wilayah {{$kecamatan2->name}}',
-                    data: [{{$pasar2}}, {{$pabrik2}}, {{$agri2}}, {{$foodRequest2}}, {{$nonFoodRequest2}} ],
+                    data: [{
+                        {
+                            $pasar2
+                        }
+                    }, {
+                        {
+                            $pabrik2
+                        }
+                    }, {
+                        {
+                            $agri2
+                        }
+                    }, {
+                        {
+                            $foodRequest2
+                        }
+                    }, {
+                        {
+                            $nonFoodRequest2
+                        }
+                    }],
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
@@ -219,45 +237,39 @@
                 }
             }
         });
+
     </script>
 
+    <!-- Page Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <p>Copyright
+                        <script>
+                            document.write(new Date().getFullYear())
 
-
-<!-- Page Footer -->
-<footer class="page-footer">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-sm-6">
-                <p>Copyright <script>
-                        document.write(new Date().getFullYear())
-
-                    </script> &copy; <a href="http://www.devcrud.com" target="_blank">DevCRUD</a></p>
-            </div>
-            <div class="col-sm-6">
-                <div class="socials">
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-facebook"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>
+                        </script>
+                        &copy;
+                        Agri Vision
                 </div>
             </div>
         </div>
-    </div>
-</footer>
-<!-- End of page footer -->
+    </footer>
+    <!-- End of page footer -->
 
-<!-- core  -->
-<script src="{{url('vendors')}}/jquery/jquery-3.4.1.js"></script>
-<script src="{{url('vendors')}}/bootstrap/bootstrap.bundle.js"></script>
-<!-- bootstrap 3 affix -->
-<script src="{{url('vendors')}}/bootstrap/bootstrap.affix.js"></script>
+    <!-- core  -->
+    <script src="{{url('vendors')}}/jquery/jquery-3.4.1.js"></script>
+    <script src="{{url('vendors')}}/bootstrap/bootstrap.bundle.js"></script>
+    <!-- bootstrap 3 affix -->
+    <script src="{{url('vendors')}}/bootstrap/bootstrap.affix.js"></script>
 
-<!-- steller js -->
-<script src="{{url('js')}}/landing-page.js"></script>
+    <!-- steller js -->
+    <script src="{{url('js')}}/landing-page.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
 
 
