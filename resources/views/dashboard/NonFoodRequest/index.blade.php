@@ -56,7 +56,7 @@
                                     <td>{{$x->number}} </td>
                                     <td>{{$x->status}}</td>
                                     <td>{{$x->user->name}}</td>
-                                    <td><a href="{{route('admin.downloadDocFood' , ['id'=>$x->id])}}" class="btn btn-danger">Download Dokumen Pendukung</a></td>
+                                    <td><a href="{{route('admin.downloadDocNonFood' , ['id'=>$x->id])}}" class="btn btn-danger">Download Dokumen Pendukung</a></td>
                                     <td>
                                         <a href="{{route('admin.acceptRequestNonFood' , ['id'=>$x->id])}}" class="btn btn-success">Accept Request</a>
                                         <a href="{{route('admin.rejectRequestNonFood' , ['id'=>$x->id])}}" class="btn btn-danger"> Tolak Request</a>
@@ -155,7 +155,7 @@
                                     <td>{{$x->number}}</td>
                                     <td>{{$x->status}}</td>
                                     <td>{{$x->user->name}}</td>
-                                    <td><a href="{{route('admin.downloadDocFood' , ['id'=>$x->id])}}" class="btn btn-danger">Download Dokumen Pendukung</a></td>
+                                    <td><a href="{{route('admin.downloadDocNonFood' , ['id'=>$x->id])}}" class="btn btn-danger">Download Dokumen Pendukung</a></td>
                                     <td>
                                         <a href="{{route('admin.doneProgressNonFood' , ['id'=>$x->id])}}" class="btn btn-success">Run progres</a>
 
@@ -204,7 +204,7 @@
                                     <td>{{$x->number}}</td>
                                     <td>{{$x->status}}</td>
                                     <td>{{$x->user->name}}</td>
-                                    <td><a href="{{route('admin.downloadDocFood' , ['id'=>$x->id])}}" class="btn btn-danger">Download Dokumen Pendukung</a></td>
+                                    <td><a href="{{route('admin.downloadDocNonFood' , ['id'=>$x->id])}}" class="btn btn-danger">Download Dokumen Pendukung</a></td>
                                         <td>
                                         <a class="btn btn-success">Finished</a>
 

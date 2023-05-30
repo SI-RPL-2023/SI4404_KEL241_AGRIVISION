@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with Steller landing page.">
     <meta name="author" content="Devcrud">
-    <title>Steller Landing page | Free Bootstrap 4.1 landing page</title>
+    <title>Agri Vision Landing page</title>
     <!-- font icons -->
     <link rel="stylesheet" href="{{url('vendors')}}/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Steller main styles -->
@@ -214,7 +213,7 @@
                                                     <td>{{$x->number}}</td>
                                                     <td>{{$x->status}}</td>
                                                     <td>{{$x->user->name}}</td>
-                                                    <td><a href="{{route('admin.downloadDocFood' , ['id'=>$x->id])}}" class="btn btn-danger">Download Dokumen Pendukung</a></td>
+                                                    <td><a href="{{route('admin.downloadDocNonFood' , ['id'=>$x->id])}}" class="btn btn-danger">Download Dokumen Pendukung</a></td>
                                                 </tr>
 
                                                 <?php  $t++ ;?>
@@ -235,7 +234,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -287,7 +286,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Request Pangan</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -303,7 +302,7 @@
                                 @method('post')
                                 <div class="modal-body bg-white">
                                     <div class="form-group m-3">
-                                        <label for="">Nama Pabrik</label>
+                                        <label for="">Nama Permintaan</label>
                                         <input type="text" name="title" class="form-control">
                                     </div>
 
@@ -322,7 +321,7 @@
                                     </div>
 
                                     <div class="form-group m-3">
-                                        <label for="">Kecamatan Pabrik</label>
+                                        <label for="">Kecamatan</label>
                                         <select name="kecamatan_id" class="form-control" id="">
                                             @foreach($kecamatan as $k)
                                                 <option value="{{$k->id}}">{{$k->name}}</option>
@@ -331,15 +330,8 @@
                                     </div>
 
                                     <div class="form-group m-3">
-                                        <label for="">Produksi</label>
+                                        <label for="">Kebutuhan</label>
                                         <input type="number" name="number" class="form-control">
-                                    </div>
-
-                                    <div class="form-group m-3">
-                                        <label for="">Masukan Status</label>
-                                        <select name="status" class="form-control" id="">
-                                            <option value="Pabrik">Pabrik</option>
-                                        </select>
                                     </div>
 
                                     <div class="form-group">
@@ -364,7 +356,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Request Pembuatan Pasar</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -380,7 +372,7 @@
                                         @method('post')
                                         <div class="modal-body bg-white">
                                             <div class="form-group m-3">
-                                                <label for="">Nama Pabrik</label>
+                                                <label for="">Nama Pasar</label>
                                                 <input type="text" name="title" class="form-control">
                                             </div>
 
@@ -390,7 +382,7 @@
                                             </div>
 
                                             <div class="form-group m-3">
-                                                <label for="">Kecamatan Pabrik</label>
+                                                <label for="">Kecamatan</label>
                                                 <select name="kecamatan_id" class="form-control" id="">
                                                     @foreach($kecamatan as $k)
                                                         <option value="{{$k->id}}">{{$k->name}}</option>
@@ -465,7 +457,6 @@
                     <p class="subtitle">Aplikasi Pementaan Pangan</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, pariatur, aperiam aut autem voluptas odit. Odio ducimus delectus totam sed aliquam sequi praesentium mollitia, illum repudiandae quidem quod, magni magnam.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, eius, nam. Quo praesentium qui temporibus voluptatum, facilis aliquid eligendi fugiat beatae neque inventore non. Laborum repellendus consequatur ullam voluptatum asperiores.</p>
-                    <button class="btn btn-primary rounded mt-3"> DOWNLOAD CV</button> <b></b>
                 </div>
             </div>
         </div>
@@ -499,7 +490,7 @@
                     <div class="custom-card card border">
                         <div class="card-body">
                             <i class="icon ti-hand-stop"></i>
-                            <h5>Pemasok & Permintaan Pangan</h5>
+                            <h5>Permintaan Pangan</h5>
                         </div>
                     </div>
                 </div>
@@ -507,7 +498,7 @@
                     <div class="custom-card card border">
                         <div class="card-body">
                             <i class="icon ti-map"></i>
-                            <h5>Lokasi Pangan</h5>
+                            <h5>Pemasok Pangan</h5>
                         </div>
                     </div>
                 </div>
@@ -578,9 +569,6 @@
                             <h5 class="mt-3">Permintaan Bantuan Pangan</h5>
                             <p class="mb-3">Accusantium labore nostrum similique quisquam.</p>
                         </div>
-                        <div class="col-sm-3 text-center text-sm-right">
-                            <button class="btn btn-light rounded">Bantuan</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -648,18 +636,12 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-6">
-                    <p>Copyright <script>
+                    <p>Copyright 
+                        <script>
                             document.write(new Date().getFullYear())
-
-                        </script> &copy; <a href="http://www.devcrud.com" target="_blank">DevCRUD</a></p>
-                </div>
-                <div class="col-sm-6">
-                    <div class="socials">
-                        <a class="social-item" href="javascript:void(0)"><i class="ti-facebook"></i></a>
-                        <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>
-                        <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>
-                        <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>
-                    </div>
+                        </script> 
+                        &copy;
+                        Agri Vision
                 </div>
             </div>
         </div>

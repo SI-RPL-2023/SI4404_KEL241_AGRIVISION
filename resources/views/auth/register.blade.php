@@ -63,15 +63,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
 
-                            <div class="d-flex mb-5 align-items-center">
-                                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                                    <input type="checkbox" checked="checked" />
-                                    <div class="control__indicator"></div>
-                                </label>
-                                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
-                            </div>
-
-
                             <input type="submit" value="Register" class="btn text-white btn-block btn-primary btn-info">
                             <div class="signup_link">
                                 Already Have Account? <a href="{{route('login')}}">Sign in</a>
