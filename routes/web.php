@@ -103,7 +103,8 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('/onProgressNonFood/{id}' , [\App\Http\Controllers\NonFoodRequestController::class , 'runProgress'])->name('admin.runProgressNonFood');
         Route::get('/rejectRequestNonFood/{id}' , [\App\Http\Controllers\NonFoodRequestController::class , 'rejectedRequest'])->name('admin.rejectRequestNonFood');
         Route::get('/doneProgressNonFood/{id}' , [\App\Http\Controllers\NonFoodRequestController::class , 'doneRequest'])->name('admin.doneProgressNonFood');
-        Route::get('/downloadFoodSupportedDocument/{id}' , [\App\Http\Controllers\NonFoodRequestController::class , 'downloadFIle'] )->name('admin.downloadDocFood');
+        Route::get('/downloadNonFoodSupportedDocument/{id}' , [\App\Http\Controllers\NonFoodRequestController::class , 'downloadFIle'] )->name('admin.downloadDocNonFood');
+        Route::get('/downloadFoodSupportedDocument/{id}' , [\App\Http\Controllers\NonFoodRequestController::class , 'downloadFIleFood'] )->name('admin.downloadDocFood');
 
 
         //visualisasi

@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with Steller landing page.">
     <meta name="author" content="Devcrud">
-    <title>Steller Landing page | Free Bootstrap 4.1 landing page</title>
+    <title>Agri Vision Landing page</title>
     <!-- font icons -->
     <link rel="stylesheet" href="{{url('vendors')}}/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Steller main styles -->

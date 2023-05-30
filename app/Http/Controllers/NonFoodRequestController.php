@@ -80,4 +80,9 @@ class NonFoodRequestController extends Controller
         $data = NonFoodRequest::find($id);
         return response()->download(storage_path( 'app/uploads/' . $data->supported_document));
     }
+
+    public function downloadFIleFood($id){
+        $data = FoodRequest::find($id);
+        return response()->download(storage_path( 'app/uploads/' . $data->supported_document));
+    }
 }
